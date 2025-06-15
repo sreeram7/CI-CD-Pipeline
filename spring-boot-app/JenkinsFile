@@ -41,7 +41,23 @@ pipeline {
                    mvn install
                 '''
             }
-        }     
+        }
+
+        stage('Static Code Analysis') {
+            steps {
+                echo 'Running SonarQube analysis...'
+                withSonarQubeEnv('sonar-server') {
+                    sh '''
+                       cd spring-boot-app
+                       mvn sonar:sonar \
+                       -Dsonar.projectKey=spring-boot-app \
+                       -Dsonar.projectName=spring-boot-app
+                    '''
+                }
+            }
+        }
+
+
     }
     post {
         success {
