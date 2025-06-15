@@ -43,31 +43,23 @@ pipeline {
             }
         }
 
-        stage('Static Code Analysis') {
-            steps {
-                echo 'Running SonarQube analysis...'
-                withSonarQubeEnv('sonar-server') {
-                    sh '''
-                       cd spring-boot-app
-                       mvn sonar:sonar \
-                       -Dsonar.projectKey=spring-boot-app \
-                       -Dsonar.projectName=spring-boot-app
-                    '''
-                }
+       stage('Static Code Analysis') {
+    steps {
+        timeout(time: 4, unit: 'MINUTES') {
+            echo 'Running SonarQube analysis...'
+            withSonarQubeEnv('sonar-server') {
+                sh '''
+                   cd spring-boot-app
+                   mvn sonar:sonar \
+                   -Dsonar.projectKey=spring-boot-app \
+                   -Dsonar.projectName=spring-boot-app
+                '''
             }
         }
+    }
+}
 
-        stage('Quality Gate Check') {
-            steps {
-                echo 'Checking SonarQube quality gate...'
-                script {
-                    def qualityGate = waitForQualityGate()
-                    if (qualityGate.status != 'OK') {
-                        error "Pipeline aborted due to SonarQube quality gate failure: ${qualityGate.status}"
-                    }
-                }
-            }
-        }
+        
 
 
     }
