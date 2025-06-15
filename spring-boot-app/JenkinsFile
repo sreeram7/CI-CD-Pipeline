@@ -22,6 +22,17 @@ pipeline {
         }       
     }
 
+    stage('Build & Test') {
+            steps {
+                echo 'Building the project...'
+                sh '''
+                   cd spring-boot-app
+                   mvn clean compile
+                   mvn test
+                '''
+            }
+    }
+
     post {
         success {
             echo 'Pipeline executed successfully!'
