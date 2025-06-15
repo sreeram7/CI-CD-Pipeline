@@ -19,10 +19,9 @@ pipeline {
                 echo "Checking out code from Git..."
                 git branch: 'main', url: 'https://github.com/sreeram7/CI-CD-Pipeline.git'
             }
-        }       
-    }
+        }  
 
-    stage('Build & Test') {
+        stage('Build & Test') {
             steps {
                 echo 'Building the project...'
                 sh '''
@@ -31,8 +30,19 @@ pipeline {
                    mvn test
                 '''
             }
-    }
+        }
 
+        stage('Package & Install') {
+            steps {
+                echo 'Packaging the project...'
+                sh '''
+                   cd spring-boot-app
+                   mvn package
+                   mvn install
+                '''
+            }
+        }     
+    }
     post {
         success {
             echo 'Pipeline executed successfully!'
