@@ -9,9 +9,9 @@ pipeline {
         NEXUS_URL = '35.171.26.66:8081'
         NEXUS_REPO = 'spring-boot-app'
         NEXUS_CREDENTIALS_ID = 'Nexus-credentials'
-        ARTIFACT_VERSION = "${BUILD_NUMBER}"
-        DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
-        REGISTRY_CREDENTIALS = credentials('docker-cred')
+        // ARTIFACT_VERSION = "${BUILD_NUMBER}"
+        // DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
+        // REGISTRY_CREDENTIALS = credentials('docker-cred')
     }
 
     stages {
@@ -99,7 +99,9 @@ pipeline {
                 repository: NEXUS_REPO,
                 version: ARTIFACT_VERSION
             }
-        }       
+        } 
+
+
 }
     post {
         success {
