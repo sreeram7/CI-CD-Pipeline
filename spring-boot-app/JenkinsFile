@@ -97,7 +97,7 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 repository: NEXUS_REPO,
-                version: ARTIFACT_VERSION
+                // version: ARTIFACT_VERSION
             }
         } 
 
