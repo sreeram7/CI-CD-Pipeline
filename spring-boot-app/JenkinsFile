@@ -63,11 +63,12 @@ pipeline {
                    -Dsonar.projectKey=spring-boot-app \
                    -Dsonar.projectName=spring-boot-app
                 '''
-                }
+                    }
+                }   
             }
         }
-    }
-    stage('Quality Gate Check') {
+    
+        stage('Quality Gate Check') {
             steps {
                 echo 'Checking SonarQube quality gate...'
                 script {
@@ -77,9 +78,9 @@ pipeline {
                     }
                 }
             }
-    }
+        }
 
-    stage('Upload to Nexus') {
+        stage('Upload to Nexus') {
             steps {
                 echo 'Uploading artifact to Nexus repository...'
                 nexusArtifactUploader artifacts: [
@@ -98,9 +99,7 @@ pipeline {
                 repository: NEXUS_REPO,
                 version: ARTIFACT_VERSION
             }
-    }
-
-        
+        }       
 }
     post {
         success {
