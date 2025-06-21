@@ -5,7 +5,7 @@ pipeline {
         maven "maven3"
     }
 
-        environment { 
+    environment { 
         NEXUS_URL = '35.171.26.66:8081'
         NEXUS_REPO = 'spring-boot-app'
         NEXUS_CREDENTIALS_ID = 'Nexus-credentials'
@@ -80,26 +80,26 @@ pipeline {
             }
         }
 
-        stage('Uploading to Nexus') {
-            steps {
-                echo 'Uploading artifact to Nexus repository...'
-                nexusArtifactUploader artifacts: [
-                    [
-                        artifactId: 'spring-boot-demo',
-                        classifier: '',
-                        file: 'spring-boot-app/target/spring-boot-web.jar',
-                        type: 'jar'
-                    ]
-                ],
-                credentialsId: NEXUS_CREDENTIALS_ID,
-                groupId: 'com.manda',
-                nexusUrl: NEXUS_URL,
-                nexusVersion: 'nexus3',
-                protocol: 'http',
-                repository: NEXUS_REPO,
-                version: ARTIFACT_VERSION
-            }
-        }       
+        // stage('Uploading to Nexus') {
+        //     steps {
+        //         echo 'Uploading artifact to Nexus repository...'
+        //         nexusArtifactUploader artifacts: [
+        //             [
+        //                 artifactId: 'spring-boot-demo',
+        //                 classifier: '',
+        //                 file: 'spring-boot-app/target/spring-boot-web.jar',
+        //                 type: 'jar'
+        //             ]
+        //         ],
+        //         credentialsId: NEXUS_CREDENTIALS_ID,
+        //         groupId: 'com.manda',
+        //         nexusUrl: NEXUS_URL,
+        //         nexusVersion: 'nexus3',
+        //         protocol: 'http',
+        //         repository: NEXUS_REPO,
+        //         version: ARTIFACT_VERSION
+        //     }
+        // }       
 }
     post {
         success {
