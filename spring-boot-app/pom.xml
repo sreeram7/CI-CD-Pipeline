@@ -70,10 +70,11 @@
         </plugins>
     </build>
 
+<!--Here URL = nexus repo server-->
     <distributionManagement>
         <repository>
             <id>spring-boot-app</id>
-            <url>http://13.127.168.222:8081/repository/spring-boot-app/</url>
+            <url>http://35.171.26.66:8081/repository/spring-boot-app/</url>
         </repository>
     </distributionManagement>
 
