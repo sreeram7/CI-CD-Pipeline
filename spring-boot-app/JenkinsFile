@@ -5,6 +5,15 @@ pipeline {
         maven "maven3"
     }
 
+        environment { 
+        NEXUS_URL = '35.171.26.66:8081'
+        NEXUS_REPO = 'spring-boot-app'
+        NEXUS_CREDENTIALS_ID = 'Nexus-credentials'
+        ARTIFACT_VERSION = "${BUILD_NUMBER}"
+        DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
+        REGISTRY_CREDENTIALS = credentials('docker-cred')
+    }
+
     stages {
 
         stage('Clean Workspace') {
@@ -44,20 +53,20 @@ pipeline {
         }
 
        stage('Static Code Analysis') {
-    steps {
-        timeout(time: 4, unit: 'MINUTES') {
+        steps {
+            timeout(time: 4, unit: 'MINUTES') {
             echo 'Running SonarQube analysis...'
-            withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar-server') {
                 sh '''
                    cd spring-boot-app
                    mvn sonar:sonar \
                    -Dsonar.projectKey=spring-boot-app \
                    -Dsonar.projectName=spring-boot-app
                 '''
+                }
             }
         }
     }
-}
     stage('Quality Gate Check') {
             steps {
                 echo 'Checking SonarQube quality gate...'
@@ -68,9 +77,31 @@ pipeline {
                     }
                 }
             }
-        }
-        
     }
+
+    stage('Upload to Nexus') {
+            steps {
+                echo 'Uploading artifact to Nexus repository...'
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'spring-boot-demo',
+                        classifier: '',
+                        file: 'spring-boot-app/target/spring-boot-web.jar',
+                        type: 'jar'
+                    ]
+                ],
+                credentialsId: NEXUS_CREDENTIALS_ID,
+                groupId: 'com.manda',
+                nexusUrl: NEXUS_URL,
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: NEXUS_REPO,
+                version: ARTIFACT_VERSION
+            }
+    }
+
+        
+}
     post {
         success {
             echo 'Pipeline executed successfully!'
