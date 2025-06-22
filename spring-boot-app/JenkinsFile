@@ -10,7 +10,7 @@ pipeline {
         NEXUS_REPO = 'spring-boot-app'
         NEXUS_CREDENTIALS_ID = 'Nexus-credentials'
         ARTIFACT_VERSION = "${BUILD_NUMBER}"
-        // DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
         // REGISTRY_CREDENTIALS = credentials('docker-cred')
     }
 
@@ -93,11 +93,11 @@ pipeline {
                 ],
                 credentialsId: NEXUS_CREDENTIALS_ID,
                 groupId: 'com.manda',
-                nexusUrl: NEXUS_URL,
+                nexusUrl: "${env.NEXUS_URL}",
                 nexusVersion: 'nexus3',
                 protocol: 'http',
-                repository: NEXUS_REPO
-                version: ARTIFACT_VERSION
+                repository: "${env.NEXUS_REPO}",
+                version: "${env.ARTIFACT_VERSION}"
             }
         } 
 
