@@ -9,7 +9,7 @@ pipeline {
         NEXUS_URL = '35.171.26.66:8081'
         NEXUS_REPO = 'spring-boot-app'
         NEXUS_CREDENTIALS_ID = 'Nexus-credentials'
-        // ARTIFACT_VERSION = "${BUILD_NUMBER}"
+        ARTIFACT_VERSION = "${BUILD_NUMBER}"
         // DOCKER_IMAGE = "jaishreeram/spring-boot-app:${BUILD_NUMBER}"
         // REGISTRY_CREDENTIALS = credentials('docker-cred')
     }
@@ -97,11 +97,19 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 repository: NEXUS_REPO
-                // version: ARTIFACT_VERSION
+                version: ARTIFACT_VERSION
             }
         } 
 
-
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh '''
+                   cd spring-boot-app
+                   docker build -t ${DOCKER_IMAGE} .
+                '''
+            }
+        }
 }
     post {
         success {
