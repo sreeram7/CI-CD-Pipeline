@@ -1,0 +1,220 @@
+2025-06-24T11:24:32.932Z	[34mINFO[0m	Need to update DB
+2025-06-24T11:24:32.932Z	[34mINFO[0m	Downloading DB...
+2025-06-24T11:24:40.627Z	[33mWARN[0m	This OS version is not on the EOL list: alpine 3.14
+2025-06-24T11:24:40.627Z	[34mINFO[0m	Detecting Alpine vulnerabilities...
+2025-06-24T11:24:40.628Z	[34mINFO[0m	Detecting jar vulnerabilities...
+2025-06-24T11:24:40.635Z	[33mWARN[0m	This OS version is no longer supported by the distribution: alpine 3.14.10
+2025-06-24T11:24:40.635Z	[33mWARN[0m	The vulnerability detection may be insufficient because security updates are not provided
+
+jaishreeram/spring-boot-app:48 (alpine 3.14.10)
+===============================================
+Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+
+opt/app/app.jar
+===============
+Total: 46 (UNKNOWN: 0, LOW: 2, MEDIUM: 23, HIGH: 14, CRITICAL: 7)
+
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+|                     LIBRARY                      | VULNERABILITY ID | SEVERITY | INSTALLED VERSION |         FIXED VERSION          |                             TITLE                              |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| ch.qos.logback:logback-core                      | CVE-2021-42550   | MEDIUM   | 1.2.3             | 1.2.9                          | logback: remote code execution                                 |
+|                                                  |                  |          |                   |                                | through JNDI call from within                                  |
+|                                                  |                  |          |                   |                                | its configuration file...                                      |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-42550                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| com.fasterxml.jackson.core:jackson-databind      | CVE-2020-25649   | HIGH     | 2.10.2            | 2.10.5.1, 2.9.10.7, 2.6.7.4    | jackson-databind: FasterXML                                    |
+|                                                  |                  |          |                   |                                | DOMDeserializer insecure                                       |
+|                                                  |                  |          |                   |                                | entity expansion is vulnerable                                 |
+|                                                  |                  |          |                   |                                | to XML external entity...                                      |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-25649                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-36518   |          |                   | 2.12.6.1, 2.13.2.1             | jackson-databind: denial of service                            |
+|                                                  |                  |          |                   |                                | via a large depth of nested objects                            |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-36518                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-42003   |          |                   | 2.13.4.1, 2.12.7.1             | jackson-databind: deep                                         |
+|                                                  |                  |          |                   |                                | wrapper array nesting wrt                                      |
+|                                                  |                  |          |                   |                                | UNWRAP_SINGLE_VALUE_ARRAYS                                     |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-42003                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-42004   |          |                   | 2.13.4, 2.12.7.1               | jackson-databind: use                                          |
+|                                                  |                  |          |                   |                                | of deeply nested arrays                                        |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-42004                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| org.apache.logging.log4j:log4j-api               | CVE-2021-45105   | MEDIUM   | 2.12.1            | 2.12.3, 2.17.0                 | log4j-core: DoS in log4j                                       |
+|                                                  |                  |          |                   |                                | 2.x with Thread Context                                        |
+|                                                  |                  |          |                   |                                | Map (MDC) input data...                                        |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-45105                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| org.apache.tomcat.embed:tomcat-embed-core        | CVE-2020-1938    | CRITICAL | 9.0.30            | 7.0.100, 8.5.51, 9.0.31        | tomcat: Apache Tomcat AJP File                                 |
+|                                                  |                  |          |                   |                                | Read/Inclusion Vulnerability                                   |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-1938                           |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-13934   | HIGH     |                   | 8.5.57, 9.0.37                 | tomcat: OutOfMemoryException                                   |
+|                                                  |                  |          |                   |                                | caused by HTTP/2 connection                                    |
+|                                                  |                  |          |                   |                                | leak could lead to DoS                                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-13934                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-17527   |          |                   | 8.5.60, 9.0.40, 10.0.2         | tomcat: HTTP/2 request header mix-up                           |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-17527                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-9484    |          |                   | 7.0.104, 8.5.55, 9.0.35,       | tomcat: deserialization                                        |
+|                                                  |                  |          |                   | 10.0.0-M5                      | flaw in session persistence                                    |
+|                                                  |                  |          |                   |                                | storage leading to RCE                                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-9484                           |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-25122   |          |                   | 8.5.63, 9.0.43, 10.0.2         | tomcat: Request mix-up with h2c                                |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-25122                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-25329   |          |                   | 7.0.108, 8.5.61, 9.0.41,       | tomcat: Incomplete fix                                         |
+|                                                  |                  |          |                   | 10.0.2                         | for CVE-2020-9484 (RCE                                         |
+|                                                  |                  |          |                   |                                | via session persistence)                                       |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-25329                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2019-17569   | MEDIUM   |                   | 9.0.31, 8.5.51, 7.0.100        | tomcat: Regression in handling of                              |
+|                                                  |                  |          |                   |                                | Transfer-Encoding header allows                                |
+|                                                  |                  |          |                   |                                | for HTTP request smuggling...                                  |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2019-17569                          |
++                                                  +------------------+          +                   +                                +----------------------------------------------------------------+
+|                                                  | CVE-2020-1935    |          |                   |                                | tomcat: Mishandling of                                         |
+|                                                  |                  |          |                   |                                | Transfer-Encoding header allows                                |
+|                                                  |                  |          |                   |                                | for HTTP request smuggling                                     |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-1935                           |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-24122   |          |                   | 7.0.107, 8.5.60, 9.0.40,       | tomcat: Information disclosure                                 |
+|                                                  |                  |          |                   | 10.0.0-M10                     | when using NTFS file system                                    |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-24122                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-43980   | LOW      |                   |                                | Apache Tomcat: Information disclosure                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-43980                          |
++--------------------------------------------------+------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+| org.apache.tomcat.embed:tomcat-embed-websocket   | CVE-2020-13935   | HIGH     |                   | 7.0.105, 8.5.57, 9.0.37,       | tomcat: multiple requests                                      |
+|                                                  |                  |          |                   | 10.0.2                         | with invalid payload length                                    |
+|                                                  |                  |          |                   |                                | in a WebSocket frame could...                                  |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-13935                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-24122   | MEDIUM   |                   | 10.0.0-M10, 9.0.40, 8.5.60,    | tomcat: Information disclosure                                 |
+|                                                  |                  |          |                   | 7.0.107                        | when using NTFS file system                                    |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-24122                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-43980   | LOW      |                   |                                | Apache Tomcat: Information disclosure                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-43980                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| org.hibernate.validator:hibernate-validator      | CVE-2020-10693   | MEDIUM   | 6.0.18.Final      | 6.0.20.Final, 6.1.5.Final      | hibernate-validator: Improper input                            |
+|                                                  |                  |          |                   |                                | validation in the interpolation                                |
+|                                                  |                  |          |                   |                                | of constraint error messages                                   |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2020-10693                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| org.springframework.boot:spring-boot             | CVE-2022-27772   | HIGH     | 2.2.4.RELEASE     | 2.2.11.RELEASE                 | Temporary Directory                                            |
+|                                                  |                  |          |                   |                                | Hijacking to Local Privilege                                   |
+|                                                  |                  |          |                   |                                | Escalation Vulnerability in                                    |
+|                                                  |                  |          |                   |                                | org.springframework.boot:spring-boot                           |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-27772                          |
++--------------------------------------------------+------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+| org.springframework.boot:spring-boot-starter-web | CVE-2022-22965   | CRITICAL |                   | 2.6.6, 2.5.12                  | spring-framework: RCE via                                      |
+|                                                  |                  |          |                   |                                | Data Binding on JDK 9+                                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22965                          |
++--------------------------------------------------+                  +          +-------------------+--------------------------------+                                                                +
+| org.springframework:spring-beans                 |                  |          | 5.2.3.RELEASE     | 5.2.20.RELEASE, 5.3.18         |                                                                |
+|                                                  |                  |          |                   |                                |                                                                |
+|                                                  |                  |          |                   |                                |                                                                |
++--------------------------------------------------+------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+| org.springframework:spring-core                  | CVE-2021-22118   | HIGH     |                   | 5.3.7, 5.2.15                  | spring-web: (re)creating the                                   |
+|                                                  |                  |          |                   |                                | temporary storage directory                                    |
+|                                                  |                  |          |                   |                                | could result in  a privilege...                                |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-22118                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-5421    | MEDIUM   |                   | 4.3.29.RELEASE,                | springframework: RFD protection                                |
+|                                                  |                  |          |                   | 5.0.19.RELEASE,                | bypass via jsessionid                                          |
+|                                                  |                  |          |                   | 5.1.18.RELEASE, 5.2.9.RELEASE  | -->avd.aquasec.com/nvd/cve-2020-5421                           |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-22060   |          |                   | 5.2.19, 5.3.14                 | springframework: Additional Log                                |
+|                                                  |                  |          |                   |                                | Injection in Spring Framework                                  |
+|                                                  |                  |          |                   |                                | (follow-up to CVE-2021-22096)                                  |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-22060                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2021-22096   |          |                   | 5.2.18, 5.3.11                 | springframework: malicious                                     |
+|                                                  |                  |          |                   |                                | input leads to insertion                                       |
+|                                                  |                  |          |                   |                                | of additional log entries                                      |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-22096                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-22950   |          |                   | 5.2.20.RELEASE, 5.3.17         | spring-expression: Denial of service                           |
+|                                                  |                  |          |                   |                                | via specially crafted SpEL expression                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22950                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-22968   |          |                   | 5.2.21, 5.3.19                 | Spring Framework: Data                                         |
+|                                                  |                  |          |                   |                                | Binding Rules Vulnerability                                    |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22968                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-22970   |          |                   | 5.3.20, 5.2.22.RELEASE         | springframework: DoS via data binding                          |
+|                                                  |                  |          |                   |                                | to multipartFile or servlet part                               |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22970                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-22971   |          |                   | 5.2.22.RELEASE, 5.3.20         | springframework: DoS                                           |
+|                                                  |                  |          |                   |                                | with STOMP over WebSocket                                      |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22971                          |
++--------------------------------------------------+------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+| org.springframework:spring-expression            | CVE-2022-22950   |          |                   | 5.2.20, 5.3.16                 | spring-expression: Denial of service                           |
+|                                                  |                  |          |                   |                                | via specially crafted SpEL expression                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22950                          |
++--------------------------------------------------+------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+| org.springframework:spring-web                   | CVE-2016-1000027 | CRITICAL |                   | 6.0.0                          | spring: HttpInvokerServiceExporter                             |
+|                                                  |                  |          |                   |                                | readRemoteInvocation method                                    |
+|                                                  |                  |          |                   |                                | untrusted java deserialization                                 |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2016-1000027                        |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-5421    | MEDIUM   |                   | 4.3.29.RELEASE,                | springframework: RFD protection                                |
+|                                                  |                  |          |                   | 5.0.19.RELEASE,                | bypass via jsessionid                                          |
+|                                                  |                  |          |                   | 5.1.18.RELEASE, 5.2.9.RELEASE  | -->avd.aquasec.com/nvd/cve-2020-5421                           |
++--------------------------------------------------+------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+| org.springframework:spring-webmvc                | CVE-2022-22965   | CRITICAL |                   | 5.2.20.RELEASE, 5.3.18         | spring-framework: RCE via                                      |
+|                                                  |                  |          |                   |                                | Data Binding on JDK 9+                                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22965                          |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2020-5421    | MEDIUM   |                   | 4.3.29.RELEASE,                | springframework: RFD protection                                |
+|                                                  |                  |          |                   | 5.0.19.RELEASE,                | bypass via jsessionid                                          |
+|                                                  |                  |          |                   | 5.1.18.RELEASE, 5.2.9.RELEASE  | -->avd.aquasec.com/nvd/cve-2020-5421                           |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-22950   |          |                   | 5.2.20.RELEASE, 5.3.17         | spring-expression: Denial of service                           |
+|                                                  |                  |          |                   |                                | via specially crafted SpEL expression                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-22950                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
+| org.thymeleaf:thymeleaf-spring5                  | CVE-2021-43466   | CRITICAL | 3.0.11.RELEASE    | 3.0.13.RELEASE                 | Template injection                                             |
+|                                                  |                  |          |                   |                                | in thymeleaf-spring5                                           |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2021-43466                          |
++--------------------------------------------------+------------------+          +-------------------+--------------------------------+----------------------------------------------------------------+
+| org.yaml:snakeyaml                               | CVE-2022-1471    |          |              1.25 |                                | SnakeYaml: Constructor                                         |
+|                                                  |                  |          |                   |                                | Deserialization                                                |
+|                                                  |                  |          |                   |                                | Remote Code Execution                                          |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-1471                           |
++                                                  +------------------+----------+                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2017-18640   | HIGH     |                   |                           1.26 | snakeyaml: Billion laughs                                      |
+|                                                  |                  |          |                   |                                | attack via alias feature                                       |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2017-18640                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-25857   |          |                   |                           1.31 | snakeyaml: Denial of Service                                   |
+|                                                  |                  |          |                   |                                | due to missing nested depth                                    |
+|                                                  |                  |          |                   |                                | limitation for collections...                                  |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-25857                          |
++                                                  +------------------+----------+                   +                                +----------------------------------------------------------------+
+|                                                  | CVE-2022-38749   | MEDIUM   |                   |                                | snakeyaml: Uncaught exception in                               |
+|                                                  |                  |          |                   |                                | org.yaml.snakeyaml.composer.Composer.composeSequenceNode       |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-38749                          |
++                                                  +------------------+          +                   +                                +----------------------------------------------------------------+
+|                                                  | CVE-2022-38750   |          |                   |                                | snakeyaml: Uncaught exception in                               |
+|                                                  |                  |          |                   |                                | org.yaml.snakeyaml.constructor.BaseConstructor.constructObject |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-38750                          |
++                                                  +------------------+          +                   +                                +----------------------------------------------------------------+
+|                                                  | CVE-2022-38751   |          |                   |                                | snakeyaml: Uncaught exception in                               |
+|                                                  |                  |          |                   |                                | java.base/java.util.regex.Pattern$Ques.match                   |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-38751                          |
++                                                  +------------------+          +                   +--------------------------------+----------------------------------------------------------------+
+|                                                  | CVE-2022-38752   |          |                   |                           1.32 | snakeyaml: Uncaught exception in                               |
+|                                                  |                  |          |                   |                                | java.base/java.util.ArrayList.hashCode                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-38752                          |
++                                                  +------------------+          +                   +                                +----------------------------------------------------------------+
+|                                                  | CVE-2022-41854   |          |                   |                                | dev-java/snakeyaml:                                            |
+|                                                  |                  |          |                   |                                | DoS via stack overflow                                         |
+|                                                  |                  |          |                   |                                | -->avd.aquasec.com/nvd/cve-2022-41854                          |
++--------------------------------------------------+------------------+----------+-------------------+--------------------------------+----------------------------------------------------------------+
