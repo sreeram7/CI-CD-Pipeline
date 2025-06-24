@@ -148,6 +148,7 @@ pipeline {
             environment {
                 GIT_REPO_NAME = "CI-CD-Pipeline"
                 GIT_USER_NAME = "sreeram7"
+                GIT_USER_ID = "mandasriram.7"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
@@ -160,7 +161,7 @@ pipeline {
                         git pull origin main
                         git add .
                         git commit -m "Update deployment image to version ${BUILD_NUMBER}" || echo "No changes to commit"
-                        git push https://${GIT_USER_NAME}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
+                        git push https://${GIT_USER_ID}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                     """
                 }
             }
