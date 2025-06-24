@@ -144,13 +144,13 @@ pipeline {
             }
         }
 
-               stage('Update Deployment File') {
+        stage('Update Deployment File') {
             environment {
                 GIT_REPO_NAME = "CI-CD-Pipeline"
                 GIT_USER_NAME = "sreeram7"
             }
             steps {
-                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                     sh """
                         echo 'Update Deployment File...'
                         git config user.email "mandasriram.7@gmail.com"
